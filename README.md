@@ -60,5 +60,6 @@ Usage
 To create the conda environment
 
 `conda create -p env --file conda.txt`
+
 `source activate env/`
 
