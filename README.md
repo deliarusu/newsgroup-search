@@ -51,4 +51,4 @@ word relationships
 
 4. Usage
 
-python newsgroup.py
+`python newsgroup.py`
