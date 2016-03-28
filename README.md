@@ -2,7 +2,8 @@
 
 A simple search engine for the 20 newsgroups text dataset. 
 
-1. Support for boolean queries: AND, OR.
+Support for boolean queries: AND, OR
+------------------------------------
 
 An implementation of the boolean retrieval model based on an inverted index. 
 The words in the documents belonging to the 20 newsgroups corpus represent 
@@ -20,7 +21,8 @@ To support boolean queries each query is converted to a syntax tree (using
 the ast python package). The tree is recursively traversed in order to obtain
  the query result. 
 
-2. A tf-idf-based ranker for simple queries
+A tf-idf-based ranker for simple queries
+----------------------------------------
 
 The 20 newsgroups corpus is converted to a sparse tfidf matrix where the rows 
 are the documents and the columns are the terms present in the corpus (using 
@@ -32,7 +34,8 @@ which match the terms in the matrix. The rows (corresponding to document ids)
 of these non-zero terms are retrieved and ordered by the tfidf weight. The 
 top k documents are returned as a result of the query.
 
-3. Improvements
+Improvements
+------------
 
 * enhance the pre-processing steps: tokenization, normalization, handling of 
 punctuation
@@ -49,6 +52,13 @@ by changing the current bag-of-words model with a model such as word2vec or
 similar Neural word representations which can model semantic and syntactic 
 word relationships
 
-4. Usage
+Usage
+-----
 
 `python newsgroup.py`
+
+To create the conda environment
+
+`conda create -p env --file conda.txt`
+`source activate env/`
+
