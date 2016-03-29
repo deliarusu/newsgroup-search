@@ -64,7 +64,7 @@ def traverse_syntax_tree(tree, iindex):
     for i in [0, 1]:
         if isinstance(tree.values[i], _ast.Name): # recursion ends
             term = tree.values[i].id
-            doc_ids[i] = iindex[term]
+            doc_ids[i] = iindex.get(term) or []
         else:                                     # recursive call
             doc_ids[i] = traverse_syntax_tree(tree.values[i], iindex)
 
@@ -89,14 +89,23 @@ def boolean_search(query, iindex):
     :return: a list of document ids matching the query
     '''
 
+    if not query:
+        print 'No query received as input'
+        return
+
     # convert query is lowercase
     query = query.lower()
+
+    # special case if the query only contains one term
+    query_elems = query.split()
+    if len(query_elems) <= 1:
+        return list(iindex.get(query))
 
     # use a syntax tree to parse the query
     tree = ast.parse(query, mode='eval')
 
     # traverse the syntax tree to obtain a result
-    return traverse_syntax_tree(tree.body, iindex)
+    return list(traverse_syntax_tree(tree.body, iindex))
 
 
 
