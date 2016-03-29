@@ -45,7 +45,7 @@ def query_tfidf_vectors(query, k, vectorizer, tfidf_vectors, newsgroups):
     result = vsm.rank_documents(query, k, vectorizer, tfidf_vectors)
 
     if result:
-        print 'Top {0} documents as result of the query {0}'.format(query)
+        print 'Top {0} documents as result of the query: {1}'.format(k, query)
 
         for r in result:
             print newsgroups.filenames[r]
